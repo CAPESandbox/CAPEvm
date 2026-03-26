@@ -20,9 +20,7 @@ We recommend using the official CAPE hypervisor installation script kvm-qemu.sh 
 
     # On your Host Machine
     git clone https://github.com/kevoreilly/CAPEv2.git
-    cd CAPEv2
-    git pull
-    cd installer
+    cd CAPEv2/installer
     sudo ./kvm-qemu.sh
 
 #### 2. Download and Recombine the Image
@@ -32,9 +30,11 @@ We recommend using the official CAPE hypervisor installation script kvm-qemu.sh 
    cat capevm.tar.gz.* | tar -xvzf -
 
 #### 3. Define the VM in Libvirt
-Move the extracted capevm.qcow2 to your libvirt storage pool (standard path: /var/lib/libvirt/images) and define it using virt-manager or virsh. 
+Move the extracted ``capevm.qcow2`` to your libvirt storage pool and define it using virt-manager or virsh with ``capevm.xml`` from this repo, edited with the path to ``capevm.qcow2``.
 
-> **Critical Note:** Ensure the network interface is attached to the same internal bridge as your Windows analysis VMs to allow for cross-guest communication and routing during multi-stage detonations.
+     sudo virsh define capevm.xml
+
+> **Note:** Ensure the network interface is attached to the same internal bridge as your Windows analysis VMs to allow for cross-guest communication and routing during detonations.
 
 ---
 ### User Accounts & Credentials
