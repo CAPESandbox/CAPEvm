@@ -58,6 +58,19 @@ Update kvmremote.conf to include the target VMs on your hypervisor in the form:
 
 ---
 
+### ⚙️ Latest Updates
+
+Ensure the CAPE instance running in the virtual machine has the latest updates:
+
+    cd /opt/CAPEv2
+    sudo su cape
+    git pull
+    .venv/bin/python -m pip install cape-parsers --upgrade
+    .venv/bin/python utils/community.py -waf
+    exit
+    sudo systemctl restart cape
+    sudo systemctl restart cape-web
+    sudo systemctl restart cape-processor
 
 #### Hyper-V Support
 For Windows-based environments, this VM can be utilized by:
