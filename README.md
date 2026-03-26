@@ -37,6 +37,8 @@ Move the extracted capevm.qcow2 to your libvirt storage pool (standard path: /va
 > **Critical Note:** Ensure the network interface is attached to the same internal bridge as your Windows analysis VMs to allow for cross-guest communication and routing during multi-stage detonations.
 
 ---
+### User Accounts & Credentials
+The virtual machine has been set up using the default 'ubuntu' account from the cloud image, for which the password is 'cape'. CAPE itself is configured to run under the 'cape' account which has no password.
 
 ### ⚙️ Configuration
 Update kvmremote.conf to include the target VMs on your hypervisor in the form:
