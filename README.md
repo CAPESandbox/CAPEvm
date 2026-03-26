@@ -43,6 +43,11 @@ The virtual machine has been set up using the default 'ubuntu' account from the 
 ### ⚙️ Configuration
 Update kvmremote.conf to include the target VMs on your hypervisor in the form:
 
+    [kvmremote]
+    machines = win10-1
+    interface = ens10
+    dsn = qemu+ssh://admin@hypervisor/system
+
     [win10-1]
     label = win10-1
     platform = windows
