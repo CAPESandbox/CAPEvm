@@ -20,19 +20,16 @@ We recommend using the official CAPE hypervisor installation script kvm-qemu.sh 
 
     # On your Host Machine
     git clone https://github.com/kevoreilly/CAPEv2.git
-    cd CAPEv2/installer
+    cd CAPEv2
+    git pull
+    cd installer
     sudo ./kvm-qemu.sh
 
 #### 2. Download and Recombine the Image
-Due to GitHub file size limits, the .qcow2 image is distributed as a multi-part archive.
-
-1.  Download all parts (capevm.7z.001, capevm.7z.002, etc.) from the Releases tab.
-2.  Recombine and extract using the first volume:
-
-    # Ensure p7zip-full is installed
-    7z x capevm.7z.001
-
-    Note: 7zip will automatically detect and join the subsequent parts (.002, .003, etc.) as long as they are in the same directory.
+1. Download all parts (`capevm.tar.gz.aa`, `ab`, etc.) from the Releases tab.
+2. Recombine and extract in one command:
+   ```bash
+   cat capevm.tar.gz.* | tar -xvzf -
 
 #### 3. Define the VM in Libvirt
 Move the extracted capevm.qcow2 to your libvirt storage pool (standard path: /var/lib/libvirt/images) and define it using virt-manager or virsh. 
